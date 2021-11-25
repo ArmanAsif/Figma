@@ -110,3 +110,51 @@
 	/* background: var(--green-light); */
 	padding: 3rem 0;
 }
+
+/*------------------------ Support Screen -----------------------------*/
+.support-screen-form-container {
+	width: 20rem;
+	margin: 5rem auto;
+}
+
+.support-screen-form-container h3 {
+	letter-spacing: 0.1rem;
+	margin-bottom: 1rem;
+	font-weight: 500;
+}
+
+.support-screen-form label {
+	font-size: 0.85rem;
+}
+
+.support-screen-form input,
+.support-screen-form select {
+	width: 100%;
+	padding: 0.8rem;
+	margin: 0.5rem 0;
+	border: none;
+	outline: none;
+	background: var(--white-light);
+	border-radius: 0.3rem;
+	border: 1px solid var(--green-main);
+	box-shadow: var(--box-shadow);
+}
+
+.support-screen-submit-button {
+	border: none;
+	color: var(--white-main);
+	background: var(--circle-color);
+	display: inline-block;
+	padding: 0.1rem 1rem 0.3rem;
+	text-decoration: none;
+	font-size: 0.9rem;
+	border-radius: 0.2rem;
+	cursor: pointer;
+	transition: all 0.3s linear;
+	box-shadow: var(--box-shadow);
+	margin-top: 0.4rem;
+}
+
+.support-screen-submit-button:hover {
+	background: var(--green-main);
+}
