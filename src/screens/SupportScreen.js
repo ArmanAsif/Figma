@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-// import CreateDB from "../helper/config";
 
 let db = null;
 let issue;
@@ -53,17 +52,10 @@ const SupportScreen = () => {
 				const sale = db.createObjectStore("sale", {
 					keyPath: "email",
 				});
-
-				alert(
-					`upgrade is called database name: ${db.name} version : ${db.version}`
-				);
 			};
 
 			request.onsuccess = (e) => {
 				db = e.target.result;
-				alert(
-					`success is called database name: ${db.name} version : ${db.version}`
-				);
 			};
 
 			request.onerror = (e) => {
@@ -87,8 +79,8 @@ const SupportScreen = () => {
 				description,
 			};
 
-			console.log(issue, email, subject, happening, description);
-			console.log(db);
+			// console.log(issue, email, subject, happening, description);
+			// console.log(db);
 
 			const tx = db.transaction("Support", "readwrite");
 			// tx.onerror = (e) => alert(` Error! ${e.target.error}  `);
@@ -99,6 +91,11 @@ const SupportScreen = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		document.getElementById("issue").value = "-";
+		document.getElementById("email").value = "";
+		document.getElementById("subject").value = "";
+		document.getElementById("happening").value = "-";
+		document.getElementById("description").value = "";
 	};
 
 	return (
