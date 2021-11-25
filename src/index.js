@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+// import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Contact from "./components/Contact";
+// import Contact from "./components/Contact";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Contact />
+		<App />
 	</React.StrictMode>,
 	document.getElementById("root")
 );
