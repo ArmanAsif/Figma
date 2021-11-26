@@ -7,22 +7,21 @@ const Header = () => {
 			<div className="header-main">
 				<div>
 					<Link to={"/"} className="header-logo">
-						{/* <img src="/images/logo.png" alt="logo" /> */}
-						<p>Figma</p>
+						<img src="/images/logo.png" alt="logo" />
 					</Link>
 				</div>
 
 				<div className="header-right">
 					<ul>
 						<li>
-							<Link to={"/contacts"} className="header-link">
-								CONTACTS
+							<Link to={"/supports"} className="header-link">
+								Supports
 							</Link>
-							<Link to={"/request"} className="header-link">
-								REQUEST
+							<Link to={"/sales"} className="header-link">
+								Sales
 							</Link>
 							<Link to={"/"} className="header-link login">
-								LOGIN
+								A
 							</Link>
 						</li>
 					</ul>

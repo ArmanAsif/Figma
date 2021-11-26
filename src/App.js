@@ -8,7 +8,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/contacts" element={<ShowContactsScreen />} />
+				<Route path="/supports" element={<ShowContactsScreen />} />
 				<Route path="/support/new" element={<SupportScreen />} />
 				<Route path="/" element={<HomeScreen />} exact />
 			</Routes>
