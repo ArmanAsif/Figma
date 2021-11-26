@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { useDispatch } from "react-redux";
+import { getUserSupportList } from "../actions/contactActions";
 
 let db = null;
 let issue;
@@ -14,6 +16,8 @@ const issueOption = ["-", "Report a bug", "Billing and account"];
 const issueOption2 = ["-", "Cann't acces Figma", "Something else"];
 
 const SupportScreen = () => {
+	const dispatch = useDispatch();
+
 	const setIssue = () => {
 		let select = document.getElementById("issue");
 		issue = select.options[select.selectedIndex].value;
@@ -32,13 +36,6 @@ const SupportScreen = () => {
 		description = document.getElementById("description").value;
 	};
 
-	// const [issue, setIssue] = useState("");
-	// const [email, setEmail] = useState("");
-	// const [subject, setSubject] = useState("");
-	// const [happening, setHappening] = useState("");
-	// const [description, setDescription] = useState("");
-	// const [attachments, setAttachments] = useState("");
-
 	useEffect(() => {
 		function CreateDB() {
 			const request = indexedDB.open("Figma", 1);
@@ -52,10 +49,13 @@ const SupportScreen = () => {
 				const sale = db.createObjectStore("sale", {
 					keyPath: "email",
 				});
+
+				dispatch(getUserSupportList(db));
 			};
 
 			request.onsuccess = (e) => {
 				db = e.target.result;
+				dispatch(getUserSupportList(db));
 			};
 
 			request.onerror = (e) => {
@@ -86,6 +86,12 @@ const SupportScreen = () => {
 			// tx.onerror = (e) => alert(` Error! ${e.target.error}  `);
 			const support = tx.objectStore("Support");
 			support.add(userRequest);
+
+			const request = indexedDB.open("Figma", 1);
+			request.onsuccess = (e) => {
+				db = e.target.result;
+				dispatch(getUserSupportList(db));
+			};
 		}
 	});
 
