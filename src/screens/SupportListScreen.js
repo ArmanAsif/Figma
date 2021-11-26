@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import { useSelector } from "react-redux";
 import Card from "../components/Card";
 
-const ShowContactsScreen = () => {
+const SupportListScreen = () => {
 	const [search, setSearch] = useState("");
 	const [filteredSupports, setFilteredSupports] = useState([]);
 
@@ -47,4 +47,4 @@ const ShowContactsScreen = () => {
 	);
 };
 
-export default ShowContactsScreen;
+export default SupportListScreen;

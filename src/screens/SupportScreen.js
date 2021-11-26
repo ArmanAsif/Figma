@@ -12,8 +12,8 @@ let happening;
 let description;
 let attachments;
 
-const issueOption = ["-", "Report a bug", "Billing and account"];
-const issueOption2 = ["-", "Cann't acces Figma", "Something else"];
+const issueOption = ["--", "Report a bug", "Billing and account"];
+const issueOption2 = ["--", "Cann't acces Figma", "Something else"];
 
 const SupportScreen = () => {
 	const dispatch = useDispatch();
@@ -67,8 +67,10 @@ const SupportScreen = () => {
 	}, []);
 
 	useEffect(() => {
-		const btnAddNote = document.getElementById("btnAddNote");
-		btnAddNote.addEventListener("click", addRequest);
+		const btnAddSupportRequest = document.getElementById(
+			"btnAddSupportRequest"
+		);
+		btnAddSupportRequest.addEventListener("click", addRequest);
 
 		function addRequest() {
 			const userRequest = {
@@ -159,7 +161,7 @@ const SupportScreen = () => {
 
 					<button
 						type="submit"
-						id="btnAddNote"
+						id="btnAddSupportRequest"
 						className="support-screen-submit-button"
 					>
 						submit

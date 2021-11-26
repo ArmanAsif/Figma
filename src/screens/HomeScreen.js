@@ -5,8 +5,34 @@ import Header from "../components/Header";
 import { useDispatch } from "react-redux";
 import { getUserSupportList } from "../actions/contactActions";
 
+let sizeOption = [
+	"Company Size",
+	"1-10",
+	"11-50",
+	"51-250",
+	"251-1K",
+	"1K-5K",
+	"5K-10K",
+	"10K-50K",
+];
+
 const HomeScreen = () => {
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		var modal = document.getElementById("myModal");
+		var btn = document.getElementById("myBtn");
+
+		btn.onclick = function () {
+			modal.style.display = "block";
+		};
+
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		};
+	});
 
 	useEffect(() => {
 		let db = null;
@@ -57,7 +83,7 @@ const HomeScreen = () => {
 								We can give you a demo, help you choose the right plan for your
 								team, or share best practices for getting the most out of Figma.
 							</p>
-							<button>Contact sales</button>
+							<button id="myBtn">Contact sales</button>
 						</div>
 					</div>
 
@@ -82,6 +108,67 @@ const HomeScreen = () => {
 			</div>
 
 			<Footer />
+
+			<div id="myModal" className="modal">
+				<div className="modal-content">
+					<h2>Contact Sales</h2>
+					<p>You can expect a reply within 1 business day.</p>
+
+					<form className="modal-content-form">
+						<input
+							id="email"
+							type="email"
+							placeholder="Email Address"
+							required={true}
+							// onChange={setEmail}
+						/>
+
+						<input
+							id="name"
+							type="text"
+							placeholder="Name"
+							required
+							// onChange={setName}
+						/>
+
+						<input
+							id="companyName"
+							type="text"
+							placeholder="Company Name"
+							required
+							// onChange={setCompanyName}
+						/>
+
+						<select id="companySize" options={sizeOption}>
+							{sizeOption.map((data, index) => {
+								return <option key={index} value={data} label={data} />;
+							})}
+						</select>
+
+						<label>How can we help? (optional)</label>
+						<textarea
+							id="description"
+							type="text"
+							rows="5"
+							cols="58"
+							placeholder=""
+							// onChange={setDescription}
+						/>
+
+						<button
+							type="submit"
+							id="btnAddSaleRequest"
+							className="modal-submit-button"
+						>
+							submit
+						</button>
+					</form>
+
+					<span>
+						By clicking “Submit” you agree to our TOS and Privacy Policy.
+					</span>
+				</div>
+			</div>
 		</>
 	);
 };
