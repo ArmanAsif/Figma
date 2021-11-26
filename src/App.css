@@ -158,3 +158,21 @@
 .support-screen-submit-button:hover {
 	background: var(--green-main);
 }
+
+/*------------------------ ShowContact Screen -----------------------------*/
+.search-box {
+	display: flex;
+	justify-content: center;
+}
+.search-box h2 {
+	display: inline-block;
+}
+.search-box input {
+	width: 15rem;
+	height: 2rem;
+	padding: 10px;
+	border: none;
+	outline: none;
+	background: var(--sixth-color);
+	border-radius: 0.5rem;
+}

@@ -1,20 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
 
 const ShowContactsScreen = () => {
+	const [search, setSearch] = useState("");
+	const [filteredSupports, setFilteredSupports] = useState([]);
+
 	const userSupportList = useSelector((state) => state.userSupportList);
 	const { supports } = userSupportList;
 
-	console.log(supports);
+	// console.log(supports);
+
+	useEffect(() => {
+		search &&
+			setFilteredSupports(
+				supports.filter((item) =>
+					item.email.toLowerCase().includes(search.toLowerCase())
+				)
+			);
+
+		// eslint-disable-next-line
+	}, [search]);
 
 	return (
 		<>
 			<Header />
-			{supports.map((data, index) => {
-				return <div key={index}>{data.email}</div>;
-			})}
+			<div className="search-box">
+				<h2>Search Request</h2>
+				<input
+					type="text"
+					placeholder="Search Request By Email..."
+					onChange={(e) => setSearch(e.target.value)}
+				/>
+			</div>
+
+			{search
+				? filteredSupports.map((data, index) => {
+						return <div key={index}>{data.email}</div>;
+				  })
+				: supports.map((data, index) => {
+						return <div key={index}>{data.email}</div>;
+				  })}
 			<Footer />
 		</>
 	);
