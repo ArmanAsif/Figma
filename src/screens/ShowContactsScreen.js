@@ -12,7 +12,9 @@ const ShowContactsScreen = () => {
 	return (
 		<>
 			<Header />
-			contact
+			{supports.map((data, index) => {
+				return <div key={index}>{data.email}</div>;
+			})}
 			<Footer />
 		</>
 	);

@@ -59,7 +59,7 @@ const SupportScreen = () => {
 			};
 
 			request.onerror = (e) => {
-				alert(`error: ${e.target.error} was found `);
+				console.log(`error: ${e.target.error} was found `);
 			};
 		}
 
@@ -79,11 +79,7 @@ const SupportScreen = () => {
 				description,
 			};
 
-			// console.log(issue, email, subject, happening, description);
-			// console.log(db);
-
 			const tx = db.transaction("Support", "readwrite");
-			// tx.onerror = (e) => alert(` Error! ${e.target.error}  `);
 			const support = tx.objectStore("Support");
 			support.add(userRequest);
 

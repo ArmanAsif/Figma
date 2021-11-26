@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { useDispatch } from "react-redux";
+import { getUserSupportList } from "../actions/contactActions";
 
 const HomeScreen = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		let db = null;
+
+		function CreateDB() {
+			const request = indexedDB.open("Figma", 1);
+
+			request.onupgradeneeded = (e) => {
+				db = e.target.result;
+				const support = db.createObjectStore("Support", {
+					keyPath: "email",
+				});
+
+				const sale = db.createObjectStore("sale", {
+					keyPath: "email",
+				});
+
+				dispatch(getUserSupportList(db));
+			};
+
+			request.onsuccess = (e) => {
+				db = e.target.result;
+				dispatch(getUserSupportList(db));
+			};
+
+			request.onerror = (e) => {
+				console.log(`error: ${e.target.error} was found `);
+			};
+		}
+
+		CreateDB();
+	}, []);
+
 	return (
 		<>
 			<Header />

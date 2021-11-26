@@ -4,26 +4,11 @@ import {
 	USER_SUPPORT_LIST_SUCCESS,
 } from "../constants/contactConstants";
 
-// let db = null;
 let data = [];
 
 export const getUserSupportList = (db) => (dispatch) => {
 	try {
 		dispatch({ type: USER_SUPPORT_LIST_REQUEST });
-
-		// function CallDB() {
-		// 	const req = indexedDB.open("Figma", 1);
-		// 	req.onsuccess = (e) => {
-		// 		console.log("success");
-		// 		db = e.target.result;
-		// 	};
-
-		// 	req.onerror = (e) => {
-		// 		alert(`error: ${e.target.error} was found `);
-		// 	};
-		// }
-
-		// CallDB();
 
 		function DisplaySupport() {
 			data = [];
