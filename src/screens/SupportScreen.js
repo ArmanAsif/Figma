@@ -108,15 +108,9 @@ const SupportScreen = () => {
 				<h3>Submit a request</h3>
 				<form className="support-screen-form" onSubmit={submitHandler}>
 					<label>Please choose your issue below</label>
-					<select
-						id="issue"
-						options={issueOption}
-						onChange={setIssue}
-					>
+					<select id="issue" options={issueOption} onChange={setIssue}>
 						{issueOption.map((data, index) => {
-							return (
-								<option key={index} value={data} label={data} />
-							);
+							return <option key={index} value={data} label={data} />;
 						})}
 					</select>
 
@@ -139,15 +133,9 @@ const SupportScreen = () => {
 					/>
 
 					<label>What's happening?</label>
-					<select
-						id="happening"
-						options={issueOption2}
-						onChange={setHappening}
-					>
+					<select id="happening" options={issueOption2} onChange={setHappening}>
 						{issueOption2.map((data, index) => {
-							return (
-								<option key={index} value={data} label={data} />
-							);
+							return <option key={index} value={data} label={data} />;
 						})}
 					</select>
 
@@ -156,7 +144,7 @@ const SupportScreen = () => {
 						id="description"
 						type="text"
 						rows="5"
-						cols="50"
+						cols="97"
 						placeholder=""
 						onChange={setDescription}
 					/>

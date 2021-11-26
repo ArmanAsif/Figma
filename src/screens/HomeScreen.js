@@ -67,7 +67,12 @@ const HomeScreen = () => {
 						<div className="home-screen-get-support-lower">
 							<h3>Get product or account support</h3>
 							<p>We are here to help you with any of your needs.</p>
-							<Link to={"/support/new"}>Get support</Link>
+							<Link
+								to={"/support/new"}
+								className="home-screen-get-support-lower-link"
+							>
+								Get support
+							</Link>
 						</div>
 					</div>
 				</div>

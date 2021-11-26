@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
+import Card from "../components/Card";
 
 const ShowContactsScreen = () => {
 	const [search, setSearch] = useState("");
@@ -9,8 +10,6 @@ const ShowContactsScreen = () => {
 
 	const userSupportList = useSelector((state) => state.userSupportList);
 	const { supports } = userSupportList;
-
-	// console.log(supports);
 
 	useEffect(() => {
 		search &&
@@ -37,11 +36,12 @@ const ShowContactsScreen = () => {
 
 			{search
 				? filteredSupports.map((data, index) => {
-						return <div key={index}>{data.email}</div>;
+						return <Card key={index} data={data} />;
 				  })
 				: supports.map((data, index) => {
-						return <div key={index}>{data.email}</div>;
+						return <Card key={index} data={data} />;
 				  })}
+
 			<Footer />
 		</>
 	);

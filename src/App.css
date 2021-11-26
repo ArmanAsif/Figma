@@ -50,7 +50,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* background: var(--green-light); */
 }
 
 .header-logo {
@@ -85,10 +84,6 @@
 	font-weight: 500;
 }
 
-/* .header-link:hover {
-	color: var(--green-main);
-} */
-
 .login {
 	margin-left: 0.5rem;
 	border: 2px solid var(--black-main);
@@ -104,18 +99,45 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
-	/* align-items: center; */
-	/* background: var(--green-light); */
-	padding: 3rem 0;
+	padding: 3rem;
+}
+
+.footer-col-one-header {
+	font-size: 2.25rem;
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+}
+
+.footer-col-one-icons p {
+	margin: 1rem 0;
+}
+
+.footer-col-two,
+.footer-col-three,
+.footer-col-four,
+.footer-col-five {
+	margin-top: 1.5rem;
+}
+
+.footer-col-two-header,
+.footer-col-three-header,
+.footer-col-four-header,
+.footer-col-five-header {
+	font-weight: 700;
+}
+
+.footer-col-two-links p,
+.footer-col-three-links p,
+.footer-col-four-links p,
+.footer-col-five-links p {
+	margin: 1rem 0;
+	font-size: 0.925rem;
 }
 
 /*------------------------ Home Screen -----------------------------*/
 .home-screen-main {
 	width: 100vw;
 	padding: 2rem;
-	/* display: flex;
-	justify-content: center;
-	align-items: center; */
 }
 
 .home-screen-main h2 {
@@ -144,60 +166,126 @@
 .home-screen-contact-sales {
 	width: 40%;
 	margin-right: 3rem;
-	height: 30rem;
+	height: 38rem;
 	border: 1px solid var(--gray-light);
 	border-radius: 0.5rem;
 }
 
 .home-screen-contact-sales-upper {
 	width: 100%;
-	height: 60%;
+	height: 55%;
 	border-radius: 0.5rem;
 	background: var(--green-light);
+}
+
+.home-screen-contact-sales-lower {
+	padding: 1rem 2rem;
+}
+
+.home-screen-contact-sales-lower h3,
+.home-screen-contact-sales-lower p {
+	text-align: left;
+}
+
+.home-screen-contact-sales-lower h3 {
+	font-size: 2rem;
+}
+
+.home-screen-contact-sales-lower p {
+	font-size: 1rem;
+}
+
+.home-screen-contact-sales-lower button {
+	width: 100%;
+	border: none;
+	color: var(--white-main);
+	background: var(--circle-color);
+	display: inline-block;
+	padding: 0.3rem 0 0.5rem;
+	text-decoration: none;
+	font-size: 1.25rem;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	transition: all 0.3s linear;
+	box-shadow: var(--box-shadow);
+	margin-top: 1.25rem;
 }
 
 .home-screen-get-support {
 	width: 30%;
 	margin-right: 3rem;
-	height: 30rem;
+	height: 38rem;
 	border: 1px solid var(--gray-light);
 	border-radius: 0.5rem;
 }
 
 .home-screen-get-support-upper {
 	width: 100%;
-	height: 60%;
+	height: 55%;
 	border-radius: 0.5rem;
 	background: var(--green-light);
 }
 
+.home-screen-get-support-lower {
+	padding: 1rem 2rem;
+}
+
+.home-screen-get-support-lower h3,
+.home-screen-get-support-lower p {
+	text-align: left;
+}
+
+.home-screen-get-support-lower h3 {
+	font-size: 1.5rem;
+}
+
+.home-screen-get-support-lower p {
+	font-size: 1rem;
+	margin-top: 2.25rem;
+}
+
+.home-screen-get-support-lower .home-screen-get-support-lower-link {
+	width: 100%;
+	border: none;
+	color: var(--white-main);
+	background: var(--circle-color);
+	display: inline-block;
+	padding: 0.3rem 0 0.5rem;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.25rem;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	transition: all 0.3s linear;
+	box-shadow: var(--box-shadow);
+	margin-top: 2.5rem;
+}
+
 /*------------------------ Support Screen -----------------------------*/
 .support-screen-form-container {
-	width: 20rem;
-	margin: 5rem auto;
+	width: 45%;
+	margin: 1.5rem 10rem 5rem;
 }
 
 .support-screen-form-container h3 {
-	letter-spacing: 0.1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	font-weight: 500;
+	font-size: 1.725rem;
 }
 
 .support-screen-form label {
-	font-size: 0.85rem;
+	font-size: 0.925rem;
 }
 
 .support-screen-form input,
 .support-screen-form select {
 	width: 100%;
 	padding: 0.8rem;
-	margin: 0.5rem 0;
+	margin: 0.75rem 0;
 	border: none;
 	outline: none;
-	background: var(--white-light);
 	border-radius: 0.3rem;
-	border: 1px solid var(--green-main);
-	box-shadow: var(--box-shadow);
+	border: 1px solid var(--black-main);
 }
 
 .support-screen-submit-button {
@@ -205,18 +293,13 @@
 	color: var(--white-main);
 	background: var(--circle-color);
 	display: inline-block;
-	padding: 0.1rem 1rem 0.3rem;
+	padding: 0.3rem 3rem 0.5rem;
 	text-decoration: none;
-	font-size: 0.9rem;
+	font-size: 1.25rem;
 	border-radius: 0.2rem;
 	cursor: pointer;
 	transition: all 0.3s linear;
-	box-shadow: var(--box-shadow);
-	margin-top: 0.4rem;
-}
-
-.support-screen-submit-button:hover {
-	background: var(--green-main);
+	margin-top: 1rem;
 }
 
 /*------------------------ ShowContact Screen -----------------------------*/
@@ -224,15 +307,51 @@
 	display: flex;
 	justify-content: center;
 }
+
 .search-box h2 {
 	display: inline-block;
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-right: 2.5rem;
 }
+
 .search-box input {
 	width: 15rem;
-	height: 2rem;
+	height: 2.25rem;
 	padding: 10px;
 	border: none;
 	outline: none;
-	background: var(--sixth-color);
+	border: 1px solid var(--black-main);
 	border-radius: 0.5rem;
+}
+
+/*------------------------ Card -----------------------------*/
+.card-container {
+	width: 40%;
+	margin: 2.5rem auto;
+	box-shadow: var(--box-shadow);
+	padding: 1rem;
+}
+
+.card-upper {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid var(--gray-light);
+}
+
+.card-upper h3 {
+	font-size: 1.25rem;
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+}
+
+.card-upper p {
+	font-size: 0.825rem;
+}
+
+.card-lower {
+	margin-top: 0.5rem;
+	font-size: 0.85rem;
 }
