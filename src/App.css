@@ -134,6 +134,19 @@
 	font-size: 0.925rem;
 }
 
+@media (max-width: 768px) {
+	.footer-main {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 2.5rem;
+	}
+
+	.footer-main > div {
+		flex-basis: 50%;
+		text-align: center;
+	}
+}
+
 /*------------------------ Home Screen -----------------------------*/
 .home-screen-main {
 	width: 100vw;
@@ -261,6 +274,32 @@
 	margin-top: 2.5rem;
 }
 
+@media (max-width: 768px) {
+	.home-screen-contact-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.home-screen-contact-sales {
+		width: 100%;
+		margin-bottom: 3rem;
+	}
+
+	.home-screen-get-support {
+		width: 100%;
+		height: 30rem;
+	}
+
+	.home-screen-get-support-lower p {
+		margin-top: 1rem;
+	}
+
+	.home-screen-get-support-lower .home-screen-get-support-lower-link {
+		margin: 1rem auto;
+	}
+}
+
 /*------------------------ Support Screen -----------------------------*/
 .support-screen-form-container {
 	width: 45%;
@@ -288,6 +327,13 @@
 	border: 1px solid var(--black-main);
 }
 
+/* select option {
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+} */
+
 .support-screen-submit-button {
 	border: none;
 	color: var(--white-main);
@@ -300,6 +346,13 @@
 	cursor: pointer;
 	transition: all 0.3s linear;
 	margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+	.support-screen-form-container {
+		width: 85%;
+		margin: 1.5rem auto 5rem;
+	}
 }
 
 /*------------------------ ShowContact Screen -----------------------------*/
@@ -322,7 +375,24 @@
 	border: none;
 	outline: none;
 	border: 1px solid var(--black-main);
-	border-radius: 0.5rem;
+	border-radius: 0.25rem;
+}
+
+@media (max-width: 768px) {
+	.search-box {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.search-box h2 {
+		margin: 0 auto;
+		margin-bottom: 1rem;
+	}
+
+	.search-box input {
+		margin: 0 auto;
+		width: 20rem;
+	}
 }
 
 /*------------------------ Card -----------------------------*/
@@ -355,6 +425,13 @@
 	margin-top: 0.5rem;
 	font-size: 0.85rem;
 	text-align: justify;
+}
+
+@media (max-width: 768px) {
+	.card-container {
+		width: 90%;
+		margin: 2rem auto;
+	}
 }
 
 /*------------------------ Modal -----------------------------*/
@@ -422,4 +499,20 @@
 	cursor: pointer;
 	transition: all 0.3s linear;
 	margin: 1rem 0 0.75rem;
+}
+
+textarea {
+	resize: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	width: 100%;
+}
+
+@media (max-width: 768px) {
+	.modal-content {
+		width: 85%;
+		padding: 1rem;
+	}
 }

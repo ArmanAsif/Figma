@@ -6,7 +6,6 @@ const Card = ({ data }) => {
 	return (
 		<div className="card-container">
 			<div className="card-upper">
-				{/* <h3>{issue}</h3> */}
 				{data.companyName ? <h3>{data.companyName}</h3> : <h3>{data.issue}</h3>}
 				<p>{email}</p>
 			</div>
