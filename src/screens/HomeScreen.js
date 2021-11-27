@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useDispatch } from "react-redux";
-import { getUserSupportList } from "../actions/contactActions";
+import { getUserSaleList, getUserSupportList } from "../actions/contactActions";
+
+let db = null;
+let email;
+let name;
+let companyName;
+let companySize;
+let description;
 
 let sizeOption = [
 	"Company Size",
@@ -18,6 +25,23 @@ let sizeOption = [
 
 const HomeScreen = () => {
 	const dispatch = useDispatch();
+
+	const setEmail = () => {
+		email = document.getElementById("email").value;
+	};
+	const setName = () => {
+		name = document.getElementById("name").value;
+	};
+	const setCompanyName = () => {
+		companyName = document.getElementById("companyName").value;
+	};
+	const setCompanySize = () => {
+		let select = document.getElementById("companySize");
+		companySize = select.options[select.selectedIndex].value;
+	};
+	const setDescription = () => {
+		description = document.getElementById("description").value;
+	};
 
 	useEffect(() => {
 		var modal = document.getElementById("myModal");
@@ -35,8 +59,6 @@ const HomeScreen = () => {
 	});
 
 	useEffect(() => {
-		let db = null;
-
 		function CreateDB() {
 			const request = indexedDB.open("Figma", 1);
 
@@ -46,16 +68,18 @@ const HomeScreen = () => {
 					keyPath: "email",
 				});
 
-				const sale = db.createObjectStore("sale", {
+				const sale = db.createObjectStore("Sale", {
 					keyPath: "email",
 				});
 
 				dispatch(getUserSupportList(db));
+				dispatch(getUserSaleList(db));
 			};
 
 			request.onsuccess = (e) => {
 				db = e.target.result;
 				dispatch(getUserSupportList(db));
+				dispatch(getUserSaleList(db));
 			};
 
 			request.onerror = (e) => {
@@ -65,6 +89,40 @@ const HomeScreen = () => {
 
 		CreateDB();
 	}, []);
+
+	useEffect(() => {
+		const btnAddSaleRequest = document.getElementById("btnAddSaleRequest");
+		btnAddSaleRequest.addEventListener("click", addSale);
+
+		function addSale() {
+			const userSaleRequest = {
+				email,
+				name,
+				companyName,
+				companySize,
+				description,
+			};
+
+			const tx = db.transaction("Sale", "readwrite");
+			const sale = tx.objectStore("Sale");
+			sale.add(userSaleRequest);
+
+			const request = indexedDB.open("Figma", 1);
+			request.onsuccess = (e) => {
+				db = e.target.result;
+				dispatch(getUserSaleList(db));
+			};
+		}
+	});
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		document.getElementById("email").value = "Email Address";
+		document.getElementById("name").value = "Name";
+		document.getElementById("companyName").value = "Company Name";
+		document.getElementById("companySize").value = "Company Size";
+		document.getElementById("description").value = "";
+	};
 
 	return (
 		<>
@@ -114,13 +172,13 @@ const HomeScreen = () => {
 					<h2>Contact Sales</h2>
 					<p>You can expect a reply within 1 business day.</p>
 
-					<form className="modal-content-form">
+					<form className="modal-content-form" onSubmit={submitHandler}>
 						<input
 							id="email"
 							type="email"
 							placeholder="Email Address"
 							required={true}
-							// onChange={setEmail}
+							onChange={setEmail}
 						/>
 
 						<input
@@ -128,7 +186,7 @@ const HomeScreen = () => {
 							type="text"
 							placeholder="Name"
 							required
-							// onChange={setName}
+							onChange={setName}
 						/>
 
 						<input
@@ -136,10 +194,14 @@ const HomeScreen = () => {
 							type="text"
 							placeholder="Company Name"
 							required
-							// onChange={setCompanyName}
+							onChange={setCompanyName}
 						/>
 
-						<select id="companySize" options={sizeOption}>
+						<select
+							id="companySize"
+							options={sizeOption}
+							onChange={setCompanySize}
+						>
 							{sizeOption.map((data, index) => {
 								return <option key={index} value={data} label={data} />;
 							})}
@@ -152,7 +214,7 @@ const HomeScreen = () => {
 							rows="5"
 							cols="58"
 							placeholder=""
-							// onChange={setDescription}
+							onChange={setDescription}
 						/>
 
 						<button

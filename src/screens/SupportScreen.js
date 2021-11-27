@@ -46,7 +46,7 @@ const SupportScreen = () => {
 					keyPath: "email",
 				});
 
-				const sale = db.createObjectStore("sale", {
+				const sale = db.createObjectStore("Sale", {
 					keyPath: "email",
 				});
 
