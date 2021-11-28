@@ -5,12 +5,12 @@ import Header from "../components/Header";
 import { useDispatch } from "react-redux";
 import { getUserSaleList, getUserSupportList } from "../actions/contactActions";
 
-let db = null;
 let email;
 let name;
 let companyName;
 let companySize;
 let description;
+let db = null;
 
 let sizeOption = [
 	"Company Size",
@@ -95,25 +95,39 @@ const HomeScreen = () => {
 		btnAddSaleRequest.addEventListener("click", addSale);
 
 		function addSale() {
-			const userSaleRequest = {
-				email,
-				name,
-				companyName,
-				companySize,
-				description,
-			};
+			if (
+				email &&
+				name &&
+				companyName &&
+				companySize !== "Company Size" &&
+				description
+			) {
+				const userSaleRequest = {
+					email,
+					name,
+					companyName,
+					companySize,
+					description,
+				};
 
-			const tx = db.transaction("Sale", "readwrite");
-			const sale = tx.objectStore("Sale");
-			sale.add(userSaleRequest);
+				const tx = db.transaction("Sale", "readwrite");
+				const sale = tx.objectStore("Sale");
+				sale.add(userSaleRequest);
 
-			const request = indexedDB.open("Figma", 1);
-			request.onsuccess = (e) => {
-				db = e.target.result;
-				dispatch(getUserSaleList(db));
-			};
+				const request = indexedDB.open("Figma", 1);
+				request.onsuccess = (e) => {
+					db = e.target.result;
+					dispatch(getUserSaleList(db));
+				};
+			} else {
+				email = "";
+				name = "";
+				companyName = "";
+				companySize = "";
+				description = "";
+			}
 		}
-	});
+	}, [dispatch]);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -177,7 +191,7 @@ const HomeScreen = () => {
 							id="email"
 							type="email"
 							placeholder="Email Address"
-							required={true}
+							required
 							onChange={setEmail}
 						/>
 
@@ -201,19 +215,21 @@ const HomeScreen = () => {
 							id="companySize"
 							options={sizeOption}
 							onChange={setCompanySize}
+							required
 						>
 							{sizeOption.map((data, index) => {
 								return <option key={index} value={data} label={data} />;
 							})}
 						</select>
 
-						<label>How can we help? (optional)</label>
+						<label>How can we help?</label>
 						<textarea
 							id="description"
 							type="text"
 							rows="5"
 							cols="58"
 							placeholder=""
+							required
 							onChange={setDescription}
 						/>
 

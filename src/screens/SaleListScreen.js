@@ -18,7 +18,6 @@ const SaleListScreen = () => {
 					item.email.toLowerCase().includes(search.toLowerCase())
 				)
 			);
-
 		// eslint-disable-next-line
 	}, [search]);
 

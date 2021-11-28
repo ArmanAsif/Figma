@@ -4,15 +4,15 @@ import Header from "../components/Header";
 import { useDispatch } from "react-redux";
 import { getUserSupportList } from "../actions/contactActions";
 
-let db = null;
 let issue;
 let email;
 let subject;
 let happening;
 let description;
+let db = null;
 
-const issueOption = ["--", "Report a bug", "Billing and account"];
-const issueOption2 = ["--", "Cann't acces Figma", "Something else"];
+const issueOption = ["-", "Report a bug", "Billing and account"];
+const issueOption2 = ["-", "Cann't acces Figma", "Something else"];
 
 const SupportScreen = () => {
 	const dispatch = useDispatch();
@@ -72,25 +72,39 @@ const SupportScreen = () => {
 		btnAddSupportRequest.addEventListener("click", addRequest);
 
 		function addRequest() {
-			const userRequest = {
-				issue,
-				email,
-				subject,
-				happening,
-				description,
-			};
+			if (
+				issue !== undefined &&
+				email &&
+				subject &&
+				happening !== undefined &&
+				description
+			) {
+				const userRequest = {
+					issue,
+					email,
+					subject,
+					happening,
+					description,
+				};
 
-			const tx = db.transaction("Support", "readwrite");
-			const support = tx.objectStore("Support");
-			support.add(userRequest);
+				const tx = db.transaction("Support", "readwrite");
+				const support = tx.objectStore("Support");
+				support.add(userRequest);
 
-			const request = indexedDB.open("Figma", 1);
-			request.onsuccess = (e) => {
-				db = e.target.result;
-				dispatch(getUserSupportList(db));
-			};
+				const request = indexedDB.open("Figma", 1);
+				request.onsuccess = (e) => {
+					db = e.target.result;
+					dispatch(getUserSupportList(db));
+				};
+			} else {
+				issue = "-";
+				email = "";
+				subject = "";
+				happening = "-";
+				description = "";
+			}
 		}
-	});
+	}, [dispatch]);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -116,7 +130,7 @@ const SupportScreen = () => {
 							*
 						</span>
 					</label>
-					<select id="issue" options={issueOption} onChange={setIssue}>
+					<select id="issue" options={issueOption} onChange={setIssue} required>
 						{issueOption.map((data, index) => {
 							return <option key={index} value={data} label={data} />;
 						})}
@@ -134,7 +148,7 @@ const SupportScreen = () => {
 						id="email"
 						type="email"
 						placeholder=""
-						required={true}
+						required
 						onChange={setEmail}
 					/>
 
@@ -162,7 +176,12 @@ const SupportScreen = () => {
 							*
 						</span>
 					</label>
-					<select id="happening" options={issueOption2} onChange={setHappening}>
+					<select
+						id="happening"
+						options={issueOption2}
+						onChange={setHappening}
+						required
+					>
 						{issueOption2.map((data, index) => {
 							return <option key={index} value={data} label={data} />;
 						})}
@@ -182,6 +201,7 @@ const SupportScreen = () => {
 						rows="5"
 						cols="97"
 						placeholder=""
+						required
 						onChange={setDescription}
 					/>
 
