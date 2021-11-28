@@ -10,7 +10,6 @@ let email;
 let subject;
 let happening;
 let description;
-let attachments;
 
 const issueOption = ["--", "Report a bug", "Billing and account"];
 const issueOption2 = ["--", "Cann't acces Figma", "Something else"];
@@ -42,11 +41,11 @@ const SupportScreen = () => {
 
 			request.onupgradeneeded = (e) => {
 				db = e.target.result;
-				const support = db.createObjectStore("Support", {
+				db.createObjectStore("Support", {
 					keyPath: "email",
 				});
 
-				const sale = db.createObjectStore("Sale", {
+				db.createObjectStore("Sale", {
 					keyPath: "email",
 				});
 
@@ -64,7 +63,7 @@ const SupportScreen = () => {
 		}
 
 		CreateDB();
-	}, []);
+	}, [dispatch]);
 
 	useEffect(() => {
 		const btnAddSupportRequest = document.getElementById(
@@ -109,14 +108,28 @@ const SupportScreen = () => {
 			<div className="support-screen-form-container">
 				<h3>Submit a request</h3>
 				<form className="support-screen-form" onSubmit={submitHandler}>
-					<label>Please choose your issue below</label>
+					<label>
+						Please choose your issue below{" "}
+						<span
+							style={{ fontSize: "1.5rem", color: "red", fontWeight: "600" }}
+						>
+							*
+						</span>
+					</label>
 					<select id="issue" options={issueOption} onChange={setIssue}>
 						{issueOption.map((data, index) => {
 							return <option key={index} value={data} label={data} />;
 						})}
 					</select>
 
-					<label>Your email address</label>
+					<label>
+						Your email address{" "}
+						<span
+							style={{ fontSize: "1.5rem", color: "red", fontWeight: "600" }}
+						>
+							*
+						</span>
+					</label>
 					<input
 						id="email"
 						type="email"
@@ -125,7 +138,14 @@ const SupportScreen = () => {
 						onChange={setEmail}
 					/>
 
-					<label>Subject</label>
+					<label>
+						Subject{" "}
+						<span
+							style={{ fontSize: "1.5rem", color: "red", fontWeight: "600" }}
+						>
+							*
+						</span>
+					</label>
 					<input
 						id="subject"
 						type="text"
@@ -134,14 +154,28 @@ const SupportScreen = () => {
 						onChange={setSubject}
 					/>
 
-					<label>What's happening?</label>
+					<label>
+						What's happening?{" "}
+						<span
+							style={{ fontSize: "1.5rem", color: "red", fontWeight: "600" }}
+						>
+							*
+						</span>
+					</label>
 					<select id="happening" options={issueOption2} onChange={setHappening}>
 						{issueOption2.map((data, index) => {
 							return <option key={index} value={data} label={data} />;
 						})}
 					</select>
 
-					<label>Description</label>
+					<label>
+						Description{" "}
+						<span
+							style={{ fontSize: "1.5rem", color: "red", fontWeight: "600" }}
+						>
+							*
+						</span>
+					</label>
 					<textarea
 						id="description"
 						type="text"
@@ -150,14 +184,6 @@ const SupportScreen = () => {
 						placeholder=""
 						onChange={setDescription}
 					/>
-
-					{/* <label>Confirm Password:</label>
-					<input
-						type="password"
-						placeholder="Confirm Password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-					/> */}
 
 					<button
 						type="submit"

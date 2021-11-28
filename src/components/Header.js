@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -24,10 +24,18 @@ const Header = () => {
 					<ul>
 						<li className="nav-links">
 							<Link to={"/supports"} className="header-link">
-								Supports
+								Supports{" "}
+								<i
+									className="fa fa-angle-down"
+									style={{ fontSize: "1.25rem", fontWeight: "700" }}
+								></i>
 							</Link>
 							<Link to={"/sales"} className="header-link">
-								Sales
+								Sales{" "}
+								<i
+									className="fa fa-angle-down"
+									style={{ fontSize: "1.25rem", fontWeight: "700" }}
+								></i>
 							</Link>
 							<Link to={"/"} className="header-link login">
 								A

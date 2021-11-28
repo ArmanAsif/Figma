@@ -52,7 +52,7 @@ const HomeScreen = () => {
 		};
 
 		window.onclick = function (event) {
-			if (event.target == modal) {
+			if (event.target === modal) {
 				modal.style.display = "none";
 			}
 		};
@@ -64,11 +64,11 @@ const HomeScreen = () => {
 
 			request.onupgradeneeded = (e) => {
 				db = e.target.result;
-				const support = db.createObjectStore("Support", {
+				db.createObjectStore("Support", {
 					keyPath: "email",
 				});
 
-				const sale = db.createObjectStore("Sale", {
+				db.createObjectStore("Sale", {
 					keyPath: "email",
 				});
 
@@ -88,7 +88,7 @@ const HomeScreen = () => {
 		}
 
 		CreateDB();
-	}, []);
+	}, [dispatch]);
 
 	useEffect(() => {
 		const btnAddSaleRequest = document.getElementById("btnAddSaleRequest");

@@ -6,10 +6,28 @@ const Footer = () => {
 			<div className="footer-col-one">
 				<div className="footer-col-one-header">Figma</div>
 				<div className="footer-col-one-icons">
-					<p>Twitter</p>
-					<p>YouTube</p>
-					<p>Instagram</p>
-					<p>Facebook</p>
+					<p>
+						<i className="fa fa-twitter" style={{ fontSize: "1.25rem" }}></i>{" "}
+						Twitter
+					</p>
+					<p>
+						<i
+							className="fa fa-youtube-square"
+							style={{ fontSize: "1.25rem" }}
+						></i>{" "}
+						YouTube
+					</p>
+					<p>
+						<i className="fa fa-instagram" style={{ fontSize: "1.25rem" }}></i>{" "}
+						Instagram
+					</p>
+					<p>
+						<i
+							className="fa fa-facebook-square"
+							style={{ fontSize: "1.25rem" }}
+						></i>{" "}
+						Facebook
+					</p>
 				</div>
 				<div className="footer-col-one-cookie">Manage Cookies</div>
 			</div>
