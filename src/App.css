@@ -42,6 +42,10 @@
 		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 /*------------------------ Header -----------------------------*/
 .header-main {
 	height: 5rem;
@@ -92,6 +96,53 @@
 	border-radius: 50%;
 	padding: 0.5rem 0.85rem;
 	transition: all 0.3s linear;
+}
+
+#showBtn {
+	font-size: 1.5rem;
+	display: none;
+	cursor: pointer;
+}
+
+@media (max-width: 768px) {
+	.header-main {
+		padding: 4rem 10%;
+	}
+
+	.nav-links {
+		position: absolute;
+		right: 0;
+		height: 90vh;
+		top: 8.05rem;
+		background: var(--green-light);
+		display: flex;
+		flex-direction: column;
+		align-items: left;
+		width: 100%;
+		transform: translateX(100%);
+		transition: all 0.3s linear;
+		padding-top: 1rem;
+	}
+
+	.header-link {
+		padding: 1rem;
+		margin-left: 1rem;
+	}
+
+	.login {
+		width: 2.75rem;
+		margin-top: 1rem;
+		margin-left: 2rem;
+		padding: 0.5rem 0.85rem;
+	}
+
+	#showBtn {
+		display: block;
+	}
+}
+
+.nav-active {
+	transform: translateX(0%);
 }
 
 /*------------------------ Footer -----------------------------*/
@@ -281,9 +332,18 @@
 		justify-content: center;
 	}
 
+	.home-screen-main h2 {
+		font-size: 2.65rem;
+		font-weight: 600;
+	}
+
 	.home-screen-contact-sales {
 		width: 100%;
 		margin-bottom: 3rem;
+	}
+
+	.home-screen-contact-sales-lower h3 {
+		font-size: 1.5rem;
 	}
 
 	.home-screen-get-support {
@@ -326,13 +386,6 @@
 	border-radius: 0.3rem;
 	border: 1px solid var(--black-main);
 }
-
-/* select option {
-	width: 100px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-} */
 
 .support-screen-submit-button {
 	border: none;

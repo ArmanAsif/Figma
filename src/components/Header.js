@@ -3,51 +3,39 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
 	useEffect(() => {
-		// const showBtn = document.getElementById("showBtn");
-		// const headerRight = document.getElementById("header-right");
-		// const headerMenu = document.getElementById("header-menu");
-		// window.addEventListener("resize", handleResize);
-		// function handleResize() {
-		// 	if (window.innerWidth <= 900) {
-		// 		showBtn.style.display = "block";
-		// 		headerRight.style.display = "none";
-		// 	} else {
-		// 		showBtn.style.display = "none";
-		// 		headerRight.style.display = "block";
-		// 	}
-		// }
-		// showBtn.onclick = function () {
-		// 	headerRight.style.display = "block";
-		// 	headerRight.style.marginTop = "5rem";
-		// };
+		const showBtn = document.getElementById("showBtn");
+		const navLinks = document.querySelector(".nav-links");
+
+		showBtn.addEventListener("click", () => {
+			navLinks.classList.toggle("nav-active");
+		});
 	});
 
 	return (
 		<>
-			<div className="header-main" id="header-main">
+			<div className="header-main">
 				<div>
 					<Link to={"/"} className="header-logo">
 						<img src="/images/logo.png" alt="logo" />
 					</Link>
 				</div>
 
-				<div className="header-right" id="header-right">
-					{/* <i className="fa fa-times" id="hideBtn"></i> */}
+				<div className="header-right">
 					<ul>
-						<li id="header-menu">
-							<Link to={"/supports"} className="header-link" id="support">
+						<li className="nav-links">
+							<Link to={"/supports"} className="header-link">
 								Supports
 							</Link>
-							<Link to={"/sales"} className="header-link" id="sale">
+							<Link to={"/sales"} className="header-link">
 								Sales
 							</Link>
-							<Link to={"/"} className="header-link login" id="login">
+							<Link to={"/"} className="header-link login">
 								A
 							</Link>
 						</li>
 					</ul>
 				</div>
-				{/* <i className="fa fa-bars" id="showBtn"></i> */}
+				<i className="fa fa-bars" id="showBtn"></i>
 			</div>
 		</>
 	);
